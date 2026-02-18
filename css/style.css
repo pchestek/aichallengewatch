@@ -1,0 +1,1080 @@
+/* AI Challenge Watch - Refined Minimal Style */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap');
+
+/* CSS Variables - Refined Palette */
+:root {
+    --color-ink: #1a1625;
+    --color-ink-soft: #2d2738;
+    --color-ink-subtle: #46425a;
+    --color-stone: #918fa3;
+    --color-paper: #fafaf9;
+    --color-linen: #f5f3f0;
+    --color-cloud: #eae7e3;
+    --color-accent: #6b4c9a;
+    --color-accent-soft: #8d6fb8;
+    --color-accent-medium: #b39bd4;
+    --color-accent-pale: #e8dff5;
+    
+    --font-serif: 'Crimson Pro', Georgia, serif;
+    --font-sans: 'Manrope', -apple-system, sans-serif;
+    
+    --shadow-soft: 0 1px 3px rgba(26, 22, 37, 0.04), 0 4px 12px rgba(26, 22, 37, 0.02);
+    --shadow-medium: 0 2px 8px rgba(26, 22, 37, 0.06), 0 8px 24px rgba(26, 22, 37, 0.04);
+    --shadow-lifted: 0 4px 16px rgba(26, 22, 37, 0.08), 0 12px 32px rgba(26, 22, 37, 0.06);
+}
+
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    color: var(--color-ink);
+    background: var(--color-paper);
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Typography Refinements */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-ink);
+}
+
+h1 { font-size: 2.75rem; letter-spacing: -0.02em; }
+h2 { font-size: 1.875rem; letter-spacing: -0.01em; }
+h3 { font-size: 1.375rem; }
+
+/* Header */
+header {
+    background: linear-gradient(to bottom, var(--color-accent) 0%, var(--color-accent-medium) 100%);
+    border-bottom: 1px solid var(--color-cloud);
+    padding: 1.5rem 0;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    transition: color 0.2s ease;
+}
+
+.site-title a:hover {
+    color: var(--color-accent-pale);
+}
+
+.main-nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    margin-left: 2.5rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: white;
+}
+
+/* Footer */
+footer {
+    background: var(--color-accent-medium);
+    padding: 3rem 0;
+    margin-top: 6rem;
+    border-top: 1px solid var(--color-cloud);
+}
+
+.footer-content {
+    text-align: center;
+    color: var(--color-ink-soft);
+    font-size: 0.9375rem;
+}
+
+.footer-content a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.footer-content a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+.disclaimer {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    font-style: italic;
+    color: var(--color-ink-subtle);
+}
+
+/* Homepage */
+.hero {
+    text-align: center;
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--color-cloud);
+}
+
+.hero h1 {
+    font-size: 3.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: var(--color-ink-subtle);
+    font-weight: 400;
+}
+
+.intro {
+    padding: 3rem 0;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* DOJ Alert */
+.doj-task-force-alert {
+    margin: 3rem 0;
+}
+
+.doj-task-force-alert h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-accent);
+}
+
+.alert-box {
+    background: linear-gradient(135deg, #fffbf0 0%, #fff8e6 100%);
+    border: 1px solid #f0e5c8;
+    border-left: 4px solid var(--color-accent);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+}
+
+.alert-box p {
+    margin: 0 0 1.125rem 0;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+}
+
+.alert-box strong {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.alert-box .learn-more a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--color-accent-pale);
+    transition: border-color 0.2s ease;
+}
+
+.alert-box .learn-more a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+/* Section Headers */
+.active-cases,
+.recent-analysis,
+.stats {
+    margin: 4rem 0;
+}
+
+.active-cases h2,
+.recent-analysis h2,
+.stats h2 {
+    font-size: 1.875rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-accent-pale);
+    font-weight: 600;
+}
+
+/* Case Cards */
+.case-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.case-card {
+    background: white;
+    border: 1px solid var(--color-cloud);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--color-accent-pale);
+}
+
+.case-card h3 {
+    margin-bottom: 0.875rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.case-card h3 a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.case-card h3 a:hover {
+    color: var(--color-accent-soft);
+}
+
+.case-meta {
+    font-size: 0.875rem;
+    color: var(--color-stone);
+    margin-bottom: 0.75rem;
+}
+
+.case-meta .state {
+    font-weight: 600;
+    margin-right: 1rem;
+    color: var(--color-ink-subtle);
+}
+
+.case-type {
+    margin-top: 0.875rem;
+    font-size: 0.8125rem;
+    color: var(--color-stone);
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+/* Post Lists */
+.post-list {
+    list-style: none;
+}
+
+.post-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-cloud);
+}
+
+.post-list li:last-child {
+    border-bottom: none;
+}
+
+.post-list a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.post-list a:hover {
+    color: var(--color-accent-soft);
+}
+
+.post-list .date {
+    color: var(--color-stone);
+    font-size: 0.875rem;
+    margin-left: 1rem;
+}
+
+.view-all {
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.view-all a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.view-all a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+/* Stats */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.stat {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: white;
+    border: 1px solid var(--color-cloud);
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 600;
+    font-family: var(--font-serif);
+    color: var(--color-accent);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9375rem;
+    color: var(--color-stone);
+    margin-top: 0.875rem;
+    font-weight: 500;
+}
+
+/* Cases List Page */
+.cases-list h1 {
+    font-size: 2.5rem;
+    margin: 3rem 0 1.5rem;
+}
+
+.intro {
+    margin-bottom: 2.5rem;
+    font-size: 1.125rem;
+    color: var(--color-ink-soft);
+}
+
+.filter-controls {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid var(--color-cloud);
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+}
+
+.filter-controls label {
+    margin-right: 2.5rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+}
+
+.filter-controls select {
+    padding: 0.625rem 1rem;
+    margin-left: 0.75rem;
+    border: 1px solid var(--color-cloud);
+    border-radius: 6px;
+    background: white;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    font-size: 0.9375rem;
+    transition: border-color 0.2s ease;
+}
+
+.filter-controls select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+/* Tables */
+.cases-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2.5rem 0;
+    background: white;
+    border: 1px solid var(--color-cloud);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.cases-table th {
+    background: var(--color-linen);
+    color: var(--color-ink);
+    padding: 1.125rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--color-cloud);
+}
+
+.cases-table td {
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--color-cloud);
+    color: var(--color-ink-soft);
+}
+
+.cases-table tr:last-child td {
+    border-bottom: none;
+}
+
+.cases-table tr:hover {
+    background: var(--color-linen);
+}
+
+.cases-table a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.cases-table a:hover {
+    color: var(--color-accent-soft);
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.status-badge.active {
+    background: var(--color-accent-pale);
+    color: var(--color-accent);
+}
+
+.status-badge.settled {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-badge.dismissed {
+    background: var(--color-cloud);
+    color: var(--color-stone);
+}
+
+.status-badge.pending {
+    background: var(--color-accent-pale);
+    color: var(--color-accent);
+}
+
+.case-count {
+    text-align: right;
+    color: var(--color-stone);
+    font-size: 0.875rem;
+}
+
+/* Case Detail Page */
+.case-detail h1 {
+    font-size: 2.5rem;
+    margin: 3rem 0 1.5rem;
+    font-weight: 600;
+}
+
+.case-status {
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    margin-bottom: 2.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+}
+
+.case-status.active {
+    background: var(--color-accent-pale);
+    color: var(--color-accent);
+}
+
+/* Case Details Box */
+.case-details-box {
+    background: white;
+    border: 1px solid var(--color-cloud);
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+}
+
+.case-details-box h2 {
+    font-size: 1.375rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.case-details-box dl {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 1.25rem;
+}
+
+.case-details-box dt {
+    font-weight: 600;
+    color: var(--color-ink-subtle);
+    font-size: 0.9375rem;
+}
+
+.case-details-box dd {
+    color: var(--color-ink-soft);
+}
+
+.case-details-box dd ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.case-details-box dd a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.case-details-box dd a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+/* Lower Court Info */
+.lower-court-info {
+    margin: 2.5rem 0;
+}
+
+.lower-court-box {
+    background: #faf9f7;
+    border: 1px solid var(--color-cloud);
+    border-left: 4px solid var(--color-stone);
+    padding: 2rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.lower-court-box h3 {
+    font-size: 1.125rem;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.lower-court-box dl {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 1.25rem;
+}
+
+.lower-court-box dt {
+    font-weight: 600;
+    color: var(--color-ink-subtle);
+}
+
+.lower-court-box dd {
+    color: var(--color-ink-soft);
+}
+
+.lower-court-box p {
+    margin-bottom: 1em;
+}
+
+/* Appeal Info */
+.appeal-info {
+    margin: 2.5rem 0;
+}
+
+.appeal-box {
+    background: linear-gradient(135deg, #fdfbff 0%, #f8f5ff 100%);
+    border: 1px solid var(--color-accent-pale);
+    border-left: 4px solid var(--color-accent);
+    padding: 2rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+}
+
+.appeal-box h3 {
+    font-size: 1.125rem;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.appeal-box dl {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.appeal-box dt {
+    font-weight: 600;
+    color: var(--color-ink-subtle);
+}
+
+.appeal-box dd {
+    color: var(--color-ink-soft);
+}
+
+.appeal-documents ul {
+    list-style: none;
+    margin: 1rem 0 0 0;
+    padding: 0;
+}
+
+.appeal-documents li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-accent-pale);
+}
+
+.appeal-documents li:last-child {
+    border-bottom: none;
+}
+
+.appeal-documents a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.appeal-documents a:hover {
+    color: var(--color-accent-soft);
+}
+
+.appeal-documents .date {
+    color: var(--color-stone);
+    font-size: 0.875rem;
+    margin-left: 0.75rem;
+}
+
+/* Content Sections */
+.summary,
+.documents,
+.timeline,
+.related-analysis,
+.related-cases {
+    margin: 3.5rem 0;
+}
+
+.summary h2,
+.documents h2,
+.timeline h2,
+.related-analysis h2,
+.related-cases h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-accent-pale);
+    font-weight: 600;
+}
+
+.summary p {
+    margin-bottom: 1em;
+}
+
+.documents ul,
+.related-analysis ul,
+.related-cases ul {
+    list-style: none;
+}
+
+.documents li,
+.related-analysis li,
+.related-cases li {
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--color-cloud);
+}
+
+.documents li:last-child,
+.related-analysis li:last-child,
+.related-cases li:last-child {
+    border-bottom: none;
+}
+
+.documents a,
+.related-analysis a,
+.related-cases a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.documents a:hover,
+.related-analysis a:hover,
+.related-cases a:hover {
+    color: var(--color-accent-soft);
+}
+
+.documents .date,
+.related-analysis .date {
+    color: var(--color-stone);
+    font-size: 0.875rem;
+    margin-left: 0.75rem;
+}
+
+/* Timeline */
+.timeline-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-cloud);
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-date {
+    font-weight: 600;
+    color: var(--color-accent);
+    font-size: 0.9375rem;
+}
+
+.timeline-content h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.625rem;
+    font-weight: 600;
+}
+
+.timeline-content p {
+    margin-bottom: 1em;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+}
+
+/* Case Footer */
+.case-footer {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-cloud);
+    color: var(--color-stone);
+    font-size: 0.875rem;
+}
+
+.share-links {
+    margin-top: 1.25rem;
+}
+
+.share-links a {
+    color: var(--color-accent);
+    margin-left: 1.25rem;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.share-links a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+/* Blog Post / Analysis */
+.blog-post {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.post-header {
+    margin: 3rem 0 2rem;
+}
+
+.post-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+}
+
+.post-meta {
+    color: var(--color-stone);
+    font-size: 0.9375rem;
+}
+
+.related-case-box {
+    background: linear-gradient(135deg, #fdfbff 0%, #f8f5ff 100%);
+    border-left: 4px solid var(--color-accent);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 6px;
+}
+
+.related-case-box a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.related-case-box a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+.post-content {
+    line-height: 1.8;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+}
+
+.post-content h2 {
+    font-size: 1.75rem;
+    margin: 2.5rem 0 1.25rem;
+    font-weight: 600;
+}
+
+.post-content h3 {
+    font-size: 1.375rem;
+    margin: 2rem 0 1rem;
+}
+
+.post-content p {
+    margin-bottom: 1.25rem;
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 1.25rem 0 1.25rem 2rem;
+}
+
+.post-content a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent-pale);
+    transition: border-color 0.2s ease;
+}
+
+.post-content a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+.post-footer {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-cloud);
+}
+
+/* Content Page */
+.content-page {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.content-page h1 {
+    font-size: 2.5rem;
+    margin: 3rem 0 1.5rem;
+}
+
+.page-content {
+    line-height: 1.8;
+    font-size: 1.0625rem;
+    color: var(--color-ink-soft);
+}
+
+.page-content h2 {
+    font-size: 1.75rem;
+    margin: 2.5rem 0 1.25rem;
+}
+
+.page-content h3 {
+    font-size: 1.375rem;
+    margin: 2rem 0 1rem;
+}
+
+.page-content p {
+    margin-bottom: 1.25rem;
+}
+
+.page-content ul,
+.page-content ol {
+    margin: 1.25rem 0 1.25rem 2rem;
+}
+
+.page-content a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent-pale);
+    transition: border-color 0.2s ease;
+}
+
+.page-content a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+/* Federal Cases List */
+.federal-cases-list {
+    margin: 2.5rem 0;
+}
+
+.federal-cases-list .case-item {
+    background: white;
+    border: 1px solid var(--color-cloud);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+}
+
+.federal-cases-list .case-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.federal-cases-list .case-item h3 a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.federal-cases-list .case-item h3 a:hover {
+    color: var(--color-accent-soft);
+}
+
+.federal-cases-list .case-item p {
+    margin: 0.75rem 0;
+    color: var(--color-ink-soft);
+}
+
+/* Analysis List */
+.analysis-list h1 {
+    font-size: 2.5rem;
+    margin: 3rem 0 1.5rem;
+}
+
+.post-list-full {
+    margin: 2.5rem 0;
+}
+
+.post-preview {
+    border-bottom: 1px solid var(--color-cloud);
+    padding: 2.5rem 0;
+}
+
+.post-preview:last-child {
+    border-bottom: none;
+}
+
+.post-preview h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.post-preview h2 a {
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.post-preview h2 a:hover {
+    color: var(--color-accent);
+}
+
+.post-preview .post-meta {
+    color: var(--color-stone);
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+}
+
+.post-preview .post-meta .related-case {
+    margin-left: 1.25rem;
+}
+
+.post-preview .post-meta .related-case a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.post-preview .post-meta .related-case a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+.post-preview .post-summary {
+    margin: 1.25rem 0;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+}
+
+.post-preview .read-more {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.post-preview .read-more:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-nav {
+        margin-top: 1.25rem;
+    }
+    
+    .main-nav a {
+        margin: 0 1.25rem;
+    }
+    
+    .case-details-box dl,
+    .lower-court-box dl,
+    .appeal-box dl {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .filter-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    
+    .filter-controls label {
+        margin-right: 0;
+    }
+    
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Cases - AI Challenge Watch</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+    <div class="container">
+        <div class="site-header">
+            <div class="site-title">
+                <a href="/">AI Challenge Watch</a>
+            </div>
+            <nav class="main-nav">
+                
+                <a href="/">Home</a>
+                
+                <a href="/analysis/">Analysis</a>
+                
+                <a href="/cases/">Cases</a>
+                
+                <a href="/doj-task-force/">DOJ Task Force</a>
+                
+                <a href="/about/">About</a>
+                
+            </nav>
+        </div>
+    </div>
+</header>
+
+    
+    <main class="cases-list">
+        <div class="container">
+            <h1>All Cases</h1>
+            
+            <p class="intro">Tracking legal challenges to state AI regulation laws across the United States.</p>
+            
+            <div class="filter-controls">
+                <label>Filter by Status: 
+                    <select id="statusFilter">
+                        <option value="all">All Cases</option>
+                        <option value="active">Active</option>
+                        <option value="appealed">Appealed</option>
+                        <option value="settled">Settled</option>
+                        <option value="dismissed">Dismissed</option>
+                    </select>
+                </label>
+                
+                <label>Filter by Type:
+                    <select id="typeFilter">
+                        <option value="all">All Types</option>
+                        <option value="federal_challenge">Federal Challenge</option>
+                        <option value="private_challenge">Private Challenge</option>
+                        <option value="state_response">State Response</option>
+                    </select>
+                </label>
+            </div>
+            
+            <table class="cases-table" id="casesTable">
+                <thead>
+                    <tr>
+                        <th>Case</th>
+                        <th>Court Level</th>
+                        <th>Law Challenged</th>
+                        <th>Filed</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    <tr data-status="active" data-type="private_challenge">
+                        <td><a href="/cases/babylon-bee-v-bonta-appeal/">The Babylon Bee v. Bonta (Appeal)</a></td>
+                        <td>Court of Appeals</td>
+                        <td>
+                            
+                                
+                                    Cal. AB 2655
+                                
+                            
+                        </td>
+                        <td>Sep 30, 2025</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>Private challenge</td>
+                    </tr>
+                
+                    <tr data-status="appealed" data-type="private_challenge">
+                        <td><a href="/cases/kohls-v-bonta/">Kohls v. Bonta</a></td>
+                        <td>District Court</td>
+                        <td>
+                            
+                                
+                                    Cal. AB 2839
+                                
+                                    , Cal. AB 2655
+                                
+                            
+                        </td>
+                        <td>Sep 17, 2024</td>
+                        <td><span class="status-badge appealed">Appealed</span></td>
+                        <td>Private challenge</td>
+                    </tr>
+                
+                    <tr data-status="active" data-type="private_challenge">
+                        <td><a href="/cases/kohls-v-ellison/">Kohls v. Ellison</a></td>
+                        <td>District Court</td>
+                        <td>
+                            
+                                Minn. Stat. § 609.771
+                            
+                        </td>
+                        <td>Jul 27, 2024</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>Private challenge</td>
+                    </tr>
+                
+                    <tr data-status="closed" data-type="private_challenge">
+                        <td><a href="/cases/kohls-v-ellison-appeal/">Kohls v. Ellison (Appeal)</a></td>
+                        <td>Court of Appeals</td>
+                        <td>
+                            
+                                
+                                    Minn. Stat. § 609.771
+                                
+                            
+                        </td>
+                        <td>Feb 12, 2025</td>
+                        <td><span class="status-badge closed">Closed</span></td>
+                        <td>Private challenge</td>
+                    </tr>
+                
+                    <tr data-status="active" data-type="private_challenge">
+                        <td><a href="/cases/x-corp-v-ellison/">X Corp. v. Ellison</a></td>
+                        <td>District Court</td>
+                        <td>
+                            
+                                Minn. Stat. § 609.771
+                            
+                        </td>
+                        <td>Apr 23, 2025</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>Private challenge</td>
+                    </tr>
+                
+                    <tr data-status="active" data-type="private_challenge">
+                        <td><a href="/cases/xai-v-california/">xAI Corp. v. Bonta</a></td>
+                        <td>District Court</td>
+                        <td>
+                            
+                                Cal. AB 2013
+                            
+                        </td>
+                        <td>Dec 29, 2025</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>Private challenge</td>
+                    </tr>
+                
+                </tbody>
+            </table>
+            
+            <p class="case-count">Showing <span id="caseCount">6</span> cases</p>
+        </div>
+    </main>
+    
+    <footer>
+    <div class="container">
+        <div class="footer-content">
+            <p>&copy; 2026 Pamela Chestek. Tracking legal challenges to state AI regulation.</p>
+            <p>
+                <a href="/about/">About</a> | 
+                <a href="/feed.xml">RSS</a> | 
+                <a href="https://github.com/yourusername/aichallengewatch">GitHub</a>
+            </p>
+            <p class="disclaimer">
+                This site is for informational purposes only and does not constitute legal advice. 
+                For the most current case information, consult official court records.
+            </p>
+        </div>
+    </div>
+</footer>
+
+    
+    <script>
+        
+        const statusFilter = document.getElementById('statusFilter');
+        const typeFilter = document.getElementById('typeFilter');
+        const table = document.getElementById('casesTable');
+        const caseCount = document.getElementById('caseCount');
+        
+        function filterTable() {
+            const statusValue = statusFilter.value;
+            const typeValue = typeFilter.value;
+            const rows = table.querySelectorAll('tbody tr');
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const status = row.dataset.status;
+                const type = row.dataset.type;
+                const statusMatch = statusValue === 'all' || status === statusValue;
+                const typeMatch = typeValue === 'all' || type === typeValue;
+                
+                if (statusMatch && typeMatch) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            caseCount.textContent = visibleCount;
+        }
+        
+        statusFilter.addEventListener('change', filterTable);
+        typeFilter.addEventListener('change', filterTable);
+    </script>
+</body>
+</html>
