@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Analysis on AI Challenge Watch</title>
-    <link>http://localhost:1313/analysis/</link>
+    <link>https://aichallengewatch.com/analysis/</link>
     <description>Recent content in Analysis on AI Challenge Watch</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Jan 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/analysis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://aichallengewatch.com/analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Insert title here</title>
-      <link>http://localhost:1313/analysis/xai-first-amendment-analysis/</link>
-      <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/analysis/xai-first-amendment-analysis/</guid>
-      <description></description>
+      <title>Welcome to AI Challenge Watch</title>
+      <link>https://aichallengewatch.com/analysis/hello-world/</link>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://aichallengewatch.com/analysis/hello-world/</guid>
+      <description>In 2025, lawmakers across all 50 states introduced over 1,200 AI-related bills, with 145 enacted into law. According to the National Conference of State Legislatures, 38 states adopted AI-related measures in 2025. These laws represent the primary regulatory framework for AI in the United States, as Congress has not passed comprehensive federal AI legislation.&#xA;Some, or many, of these laws may be flawed, particularly on First Amendment grounds, since AI produces content that can be considered speech.</description>
     </item>
   </channel>
 </rss>
