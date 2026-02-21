@@ -20,10 +20,10 @@ body {
 
 /* Header */
 header {
-    background: #1a1a1a;
+    background: linear-gradient(to bottom, #6b4c9a, #b39bd4);
     color: #fff;
     padding: 1rem 0;
-    border-bottom: 3px solid #0066cc;
+    border-bottom: 3px solid #6b4c9a;
 }
 
 .site-header {
