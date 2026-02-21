@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cases on AI Challenge Watch</title>
-    <link>https://aichallengewatch.com/cases/</link>
+    <link>http://localhost:1313/cases/</link>
     <description>Recent content in Cases on AI Challenge Watch</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://aichallengewatch.com/cases/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/cases/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/babylon-bee-v-bonta-appeal/</link>
+      <link>http://localhost:1313/cases/babylon-bee-v-bonta-appeal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/babylon-bee-v-bonta-appeal/</guid>
+      <guid>http://localhost:1313/cases/babylon-bee-v-bonta-appeal/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/kohls-v-bonta/</link>
+      <link>http://localhost:1313/cases/kohls-v-bonta/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/kohls-v-bonta/</guid>
+      <guid>http://localhost:1313/cases/kohls-v-bonta/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/kohls-v-ellison-appeal/</link>
+      <link>http://localhost:1313/cases/kohls-v-ellison-appeal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/kohls-v-ellison-appeal/</guid>
+      <guid>http://localhost:1313/cases/kohls-v-ellison-appeal/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/kohls-v-ellison/</link>
+      <link>http://localhost:1313/cases/kohls-v-ellison/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/kohls-v-ellison/</guid>
+      <guid>http://localhost:1313/cases/kohls-v-ellison/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/x-corp-v-ellison/</link>
+      <link>http://localhost:1313/cases/x-corp-v-ellison/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/x-corp-v-ellison/</guid>
+      <guid>http://localhost:1313/cases/x-corp-v-ellison/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/xai-v-california/</link>
+      <link>http://localhost:1313/cases/xai-v-california/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/xai-v-california/</guid>
+      <guid>http://localhost:1313/cases/xai-v-california/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,73 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AI Challenge Watch</title>
-    <link>https://aichallengewatch.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on AI Challenge Watch</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://aichallengewatch.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Welcome to AI Challenge Watch</title>
-      <link>https://aichallengewatch.com/analysis/hello-world/</link>
+      <link>http://localhost:1313/analysis/hello-world/</link>
       <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/analysis/hello-world/</guid>
+      <guid>http://localhost:1313/analysis/hello-world/</guid>
       <description>In 2025, lawmakers across all 50 states introduced over 1,200 AI-related bills, with 145 enacted into law. According to the National Conference of State Legislatures, 38 states adopted AI-related measures in 2025. These laws represent the primary regulatory framework for AI in the United States, as Congress has not passed comprehensive federal AI legislation.&#xA;Some, or many, of these laws may be flawed, particularly on First Amendment grounds, since AI produces content that can be considered speech.</description>
     </item>
     <item>
       <title>About AI Challenge Watch</title>
-      <link>https://aichallengewatch.com/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>What We Track AI Challenge Watch tracks legal challenges to state artificial intelligence regulation in the United States. This site monitors:&#xA;Private Challenges: Lawsuits filed by companies, organizations, or individuals challenging state AI regulations DOJ AI Litigation Task Force: Federal lawsuits filed by the Department of Justice challenging state AI laws (see our DOJ Task Force page for details) State Responses: Legal actions by states challenging federal preemption efforts Why This Matters In 2025, lawmakers across all 50 states introduced over 1,200 AI-related bills, with 145 enacted into law.</description>
     </item>
     <item>
       <title>DOJ AI Litigation Task Force</title>
-      <link>https://aichallengewatch.com/doj-task-force/</link>
+      <link>http://localhost:1313/doj-task-force/</link>
       <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/doj-task-force/</guid>
+      <guid>http://localhost:1313/doj-task-force/</guid>
       <description>Overview On January 9, 2026, the U.S. Department of Justice announced (pdf) the creation of an Artificial Intelligence Litigation Task Force with the sole mandate to challenge state AI laws deemed inconsistent with the Trump administration&amp;rsquo;s federal AI policy framework.&#xA;Background: Executive Order The Task Force was established pursuant to President Trump&amp;rsquo;s December 11, 2025 executive order titled &amp;ldquo;Ensuring a National Policy Framework for Artificial Intelligence.&amp;rdquo; The executive order aims to establish a &amp;ldquo;minimally burdensome national policy framework for AI&amp;rdquo; and identifies certain state AI laws as obstacles to American AI development.</description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/babylon-bee-v-bonta-appeal/</link>
+      <link>http://localhost:1313/cases/babylon-bee-v-bonta-appeal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/babylon-bee-v-bonta-appeal/</guid>
+      <guid>http://localhost:1313/cases/babylon-bee-v-bonta-appeal/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/kohls-v-bonta/</link>
+      <link>http://localhost:1313/cases/kohls-v-bonta/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/kohls-v-bonta/</guid>
+      <guid>http://localhost:1313/cases/kohls-v-bonta/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/kohls-v-ellison-appeal/</link>
+      <link>http://localhost:1313/cases/kohls-v-ellison-appeal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/kohls-v-ellison-appeal/</guid>
+      <guid>http://localhost:1313/cases/kohls-v-ellison-appeal/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/kohls-v-ellison/</link>
+      <link>http://localhost:1313/cases/kohls-v-ellison/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/kohls-v-ellison/</guid>
+      <guid>http://localhost:1313/cases/kohls-v-ellison/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/x-corp-v-ellison/</link>
+      <link>http://localhost:1313/cases/x-corp-v-ellison/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/x-corp-v-ellison/</guid>
+      <guid>http://localhost:1313/cases/x-corp-v-ellison/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>https://aichallengewatch.com/cases/xai-v-california/</link>
+      <link>http://localhost:1313/cases/xai-v-california/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aichallengewatch.com/cases/xai-v-california/</guid>
+      <guid>http://localhost:1313/cases/xai-v-california/</guid>
       <description></description>
     </item>
   </channel>

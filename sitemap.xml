@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://aichallengewatch.com/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2026-02-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://aichallengewatch.com/analysis/</loc>
+    <loc>http://localhost:1313/analysis/</loc>
     <lastmod>2026-02-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://aichallengewatch.com/analysis/hello-world/</loc>
+    <loc>http://localhost:1313/analysis/hello-world/</loc>
     <lastmod>2026-02-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://aichallengewatch.com/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2026-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://aichallengewatch.com/doj-task-force/</loc>
+    <loc>http://localhost:1313/doj-task-force/</loc>
     <lastmod>2026-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://aichallengewatch.com/cases/babylon-bee-v-bonta-appeal/</loc>
+    <loc>http://localhost:1313/cases/babylon-bee-v-bonta-appeal/</loc>
   </url><url>
-    <loc>https://aichallengewatch.com/cases/kohls-v-bonta/</loc>
+    <loc>http://localhost:1313/cases/kohls-v-bonta/</loc>
   </url><url>
-    <loc>https://aichallengewatch.com/cases/kohls-v-ellison-appeal/</loc>
+    <loc>http://localhost:1313/cases/kohls-v-ellison-appeal/</loc>
   </url><url>
-    <loc>https://aichallengewatch.com/cases/kohls-v-ellison/</loc>
+    <loc>http://localhost:1313/cases/kohls-v-ellison/</loc>
   </url><url>
-    <loc>https://aichallengewatch.com/cases/x-corp-v-ellison/</loc>
+    <loc>http://localhost:1313/cases/x-corp-v-ellison/</loc>
   </url><url>
-    <loc>https://aichallengewatch.com/cases/xai-v-california/</loc>
+    <loc>http://localhost:1313/cases/xai-v-california/</loc>
   </url><url>
-    <loc>https://aichallengewatch.com/cases/</loc>
+    <loc>http://localhost:1313/cases/</loc>
   </url><url>
-    <loc>https://aichallengewatch.com/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://aichallengewatch.com/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>
