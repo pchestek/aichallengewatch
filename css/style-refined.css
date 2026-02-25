@@ -33,7 +33,6 @@
 
 body {
     font-family: var(--font-sans);
-    font-variant-ligatures: none;
     line-height: 1.7;
     color: var(--color-ink);
     background: var(--color-paper);
@@ -764,7 +763,6 @@ footer {
     margin-bottom: 1em;
     color: var(--color-ink-soft);
     line-height: 1.7;
-}
 }
 
 /* Case Footer */
