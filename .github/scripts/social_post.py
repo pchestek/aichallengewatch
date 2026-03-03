@@ -11,7 +11,7 @@ from datetime import datetime
 MASTODON_TOKEN = os.environ.get('MASTODON_TOKEN')
 BLUESKY_PASSWORD = os.environ.get('BLUESKY_PASSWORD')
 MASTODON_INSTANCE = 'https://techpolicy.social'
-BLUESKY_USERNAME = 'aichallengewatch.bsky.social'
+BLUESKY_USERNAME = 'aichallengewatch.bsky.app'
 SITE_URL = 'https://aichallengewatch.com'
 
 def get_changed_files():
@@ -77,7 +77,7 @@ def post_to_mastodon(status):
         return False
 
 def post_to_bluesky(text):
-    """Post to BlueSky"""
+    """Post to BlueSky with clickable links"""
     if not BLUESKY_PASSWORD:
         print("Warning: BLUESKY_PASSWORD not set, skipping BlueSky post")
         return False
@@ -93,17 +93,46 @@ def post_to_bluesky(text):
         login_response.raise_for_status()
         access_token = login_response.json()['accessJwt']
         
+        # Find URL in text and create facet for it
+        facets = []
+        # Look for URLs starting with http
+        url_match = re.search(r'https?://[^\s]+', text)
+        if url_match:
+            url = url_match.group(0)
+            # Calculate byte positions (BlueSky uses UTF-8 byte positions)
+            text_bytes = text.encode('utf-8')
+            url_start = len(text[:url_match.start()].encode('utf-8'))
+            url_end = len(text[:url_match.end()].encode('utf-8'))
+            
+            facets.append({
+                'index': {
+                    'byteStart': url_start,
+                    'byteEnd': url_end
+                },
+                'features': [{
+                    '$type': 'app.bsky.richtext.facet#link',
+                    'uri': url
+                }]
+            })
+        
         # Create post
         post_url = 'https://bsky.social/xrpc/com.atproto.repo.createRecord'
         headers = {'Authorization': f'Bearer {access_token}'}
+        
+        record = {
+            'text': text,
+            'createdAt': datetime.utcnow().isoformat() + 'Z',
+            '$type': 'app.bsky.feed.post'
+        }
+        
+        # Add facets if we found any URLs
+        if facets:
+            record['facets'] = facets
+        
         post_data = {
             'repo': BLUESKY_USERNAME,
             'collection': 'app.bsky.feed.post',
-            'record': {
-                'text': text,
-                'createdAt': datetime.utcnow().isoformat() + 'Z',
-                '$type': 'app.bsky.feed.post'
-            }
+            'record': record
         }
         
         response = requests.post(post_url, headers=headers, json=post_data)
