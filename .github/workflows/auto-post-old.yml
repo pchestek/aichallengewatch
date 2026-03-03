@@ -1,0 +1,37 @@
+name: Auto-post to Social Media
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/cases/**'
+      - 'content/analysis/**'
+
+jobs:
+  detect-changes-and-post:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Need previous commit to compare
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests PyYAML atproto
+      
+      - name: Detect changes and post
+        env:
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+          MASTODON_INSTANCE: https://techpolicy.social
+          BLUESKY_HANDLE: aichallengewatch.bsky.app
+          BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+          SITE_URL: https://aichallengewatch.com
+        run: python .github/scripts/social_post.py
