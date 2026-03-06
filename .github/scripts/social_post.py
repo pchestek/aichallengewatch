@@ -14,47 +14,36 @@ MASTODON_INSTANCE = 'https://techpolicy.social'
 BLUESKY_USERNAME = 'aichallengewatch.bsky.social'
 SITE_URL = 'https://aichallengewatch.com'
 
-def get_changed_files():
-    """Get list of files changed in the last commit"""
-    try:
-        result = subprocess.run(
-            ['git', 'diff', '--name-only', 'HEAD~1', 'HEAD'],
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        return result.stdout.strip().split('\n')
-    except subprocess.CalledProcessError:
-        print("Error getting changed files")
-        return []
+def read_social_post_file():
+    """Read .social-post.txt file if it exists"""
+    if os.path.exists('.social-post.txt'):
+        try:
+            with open('.social-post.txt', 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+                if len(lines) >= 2:
+                    slug = lines[0].strip()
+                    message = ''.join(lines[1:]).strip()
+                    return slug, message
+        except Exception as e:
+            print(f"Error reading .social-post.txt: {e}")
+    return None, None
 
-def extract_title_from_html(filepath):
-    """Extract the h1 title from an HTML file"""
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
-            # Find first h1 tag
-            match = re.search(r'<h1[^>]*>(.*?)</h1>', content, re.IGNORECASE | re.DOTALL)
-            if match:
-                # Strip any HTML tags from the title
-                title = re.sub(r'<[^>]+>', '', match.group(1))
-                return title.strip()
-    except Exception as e:
-        print(f"Error reading {filepath}: {e}")
-    return None
+def delete_social_post_file():
+    """Delete .social-post.txt after processing"""
+    if os.path.exists('.social-post.txt'):
+        try:
+            os.remove('.social-post.txt')
+            print("Deleted .social-post.txt")
+        except Exception as e:
+            print(f"Error deleting .social-post.txt: {e}")
 
-def extract_case_info_from_path(path):
-    """Extract case slug from path like cases/case-name/index.html"""
-    parts = path.split('/')
-    if len(parts) >= 3 and parts[0] == 'cases' and parts[2] == 'index.html':
-        return parts[1]
-    return None
-
-def extract_analysis_info_from_path(path):
-    """Extract analysis slug from path like analysis/post-name/index.html"""
-    parts = path.split('/')
-    if len(parts) >= 3 and parts[0] == 'analysis' and parts[2] == 'index.html':
-        return parts[1]
+def determine_post_type(slug):
+    """Determine if slug is a case or analysis post"""
+    # Check if the slug corresponds to a case or analysis page
+    if os.path.exists(f'cases/{slug}/index.html'):
+        return 'case'
+    elif os.path.exists(f'analysis/{slug}/index.html'):
+        return 'analysis'
     return None
 
 def post_to_mastodon(status):
@@ -144,54 +133,47 @@ def post_to_bluesky(text):
         return False
 
 def main():
-    changed_files = get_changed_files()
+    # Check for .social-post.txt file
+    slug, custom_message = read_social_post_file()
     
-    if not changed_files:
-        print("No files changed")
+    if not slug or not custom_message:
+        print("No .social-post.txt file found or file is incomplete. No posts will be made.")
+        print("To post to social media, create .social-post.txt with:")
+        print("  Line 1: case-slug or analysis-slug")
+        print("  Line 2+: Your custom message")
         return
     
-    print(f"Changed files: {changed_files}")
+    # Determine if it's a case or analysis
+    post_type = determine_post_type(slug)
     
-    # Detect case changes
-    case_changes = {}
-    for file in changed_files:
-        if file.startswith('cases/') and file.endswith('/index.html'):
-            case_slug = extract_case_info_from_path(file)
-            if case_slug:
-                title = extract_title_from_html(file)
-                if title:
-                    case_changes[case_slug] = title
+    if not post_type:
+        print(f"Warning: Could not find page for slug '{slug}'")
+        print(f"Checked: cases/{slug}/index.html and analysis/{slug}/index.html")
+        return
     
-    # Detect analysis changes
-    analysis_changes = {}
-    for file in changed_files:
-        if file.startswith('analysis/') and file.endswith('/index.html'):
-            analysis_slug = extract_analysis_info_from_path(file)
-            if analysis_slug:
-                title = extract_title_from_html(file)
-                if title:
-                    analysis_changes[analysis_slug] = title
+    # Build the URL
+    if post_type == 'case':
+        url = f"{SITE_URL}/cases/{slug}/"
+    else:
+        url = f"{SITE_URL}/analysis/{slug}/"
     
-    # Post about case changes
-    for case_slug, case_title in case_changes.items():
-        case_url = f"{SITE_URL}/cases/{case_slug}/"
-        
-        status = f"📋 Case update: {case_title}\n{case_url}"
-        
-        post_to_mastodon(status)
-        post_to_bluesky(status)
+    # Build the post text: custom message + URL
+    post_text = f"{custom_message}\n{url}"
     
-    # Post about analysis changes
-    for analysis_slug, analysis_title in analysis_changes.items():
-        analysis_url = f"{SITE_URL}/analysis/{analysis_slug}/"
-        
-        status = f"📝 New analysis: {analysis_title}\n{analysis_url}"
-        
-        post_to_mastodon(status)
-        post_to_bluesky(status)
+    print(f"Posting about {post_type}: {slug}")
+    print(f"Message: {custom_message}")
+    print(f"URL: {url}")
     
-    if not case_changes and not analysis_changes:
-        print("No case or analysis changes detected")
+    # Post to both platforms
+    mastodon_success = post_to_mastodon(post_text)
+    bluesky_success = post_to_bluesky(post_text)
+    
+    # Only delete the file if at least one post succeeded
+    if mastodon_success or bluesky_success:
+        delete_social_post_file()
+        print("Social media posts completed successfully!")
+    else:
+        print("Warning: Posts failed. .social-post.txt was NOT deleted so you can retry.")
 
 if __name__ == '__main__':
     main()
