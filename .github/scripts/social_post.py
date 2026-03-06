@@ -11,7 +11,7 @@ from datetime import datetime
 MASTODON_TOKEN = os.environ.get('MASTODON_TOKEN')
 BLUESKY_PASSWORD = os.environ.get('BLUESKY_PASSWORD')
 MASTODON_INSTANCE = 'https://techpolicy.social'
-BLUESKY_USERNAME = 'aichallengewatch.bsky.app'
+BLUESKY_USERNAME = 'aichallengewatch.bsky.social'
 SITE_URL = 'https://aichallengewatch.com'
 
 def get_changed_files():
