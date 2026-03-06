@@ -6,8 +6,15 @@
     <description>Recent content on AI Challenge Watch</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://aichallengewatch.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Court Denies xAI Preliminary Injunction</title>
+      <link>https://aichallengewatch.com/analysis/xai-v-bonta-pi/</link>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://aichallengewatch.com/analysis/xai-v-bonta-pi/</guid>
+      <description>On March 5, 2026 the court issued its order in x.AI v. Bonta, denying x.AI a preliminary injunction. x.AI asked the court to stay enforcement of the requirement in AB 2013, entitled “Artificial Intelligence Training Data Transparency,” that requires developers of “a generative artificial intelligence system or service” that is “publicly available to Californians for use” to “post on the developer’s internet website documentation regarding the data used by the developer to train the generative artificial intelligence system or service.</description>
+    </item>
     <item>
       <title>Welcome to AI Challenge Watch</title>
       <link>https://aichallengewatch.com/analysis/hello-world/</link>
