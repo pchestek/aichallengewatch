@@ -1,193 +1,168 @@
 #!/usr/bin/env python3
-"""
-Detect changes to cases/analysis and post to Mastodon and BlueSky
-"""
-
 import os
+import sys
+import json
 import subprocess
-import yaml
-import re
 import requests
+import re
 from datetime import datetime
-from atproto import Client as BlueskyClient
 
-# Configuration
+# Get environment variables
 MASTODON_TOKEN = os.environ.get('MASTODON_TOKEN')
-MASTODON_INSTANCE = os.environ.get('MASTODON_INSTANCE')
-BLUESKY_HANDLE = os.environ.get('BLUESKY_HANDLE')
 BLUESKY_PASSWORD = os.environ.get('BLUESKY_PASSWORD')
-SITE_URL = os.environ.get('SITE_URL')
-
+MASTODON_INSTANCE = 'https://techpolicy.social'
+BLUESKY_USERNAME = 'aichallengewatch.bsky.app'
+SITE_URL = 'https://aichallengewatch.com'
 
 def get_changed_files():
-    """Get list of files changed in latest commit"""
-    result = subprocess.run(
-        ['git', 'diff', '--name-only', 'HEAD~1', 'HEAD'],
-        capture_output=True,
-        text=True
-    )
-    return result.stdout.strip().split('\n')
+    """Get list of files changed in the last commit"""
+    try:
+        result = subprocess.run(
+            ['git', 'diff', '--name-only', 'HEAD~1', 'HEAD'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        return result.stdout.strip().split('\n')
+    except subprocess.CalledProcessError:
+        print("Error getting changed files")
+        return []
 
+def extract_title_from_html(filepath):
+    """Extract the h1 title from an HTML file"""
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+            # Find first h1 tag
+            match = re.search(r'<h1[^>]*>(.*?)</h1>', content, re.IGNORECASE | re.DOTALL)
+            if match:
+                # Strip any HTML tags from the title
+                title = re.sub(r'<[^>]+>', '', match.group(1))
+                return title.strip()
+    except Exception as e:
+        print(f"Error reading {filepath}: {e}")
+    return None
 
-def parse_case_yaml(filepath):
-    """Parse YAML case file"""
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+def extract_case_info_from_path(path):
+    """Extract case slug from path like cases/case-name/index.html"""
+    parts = path.split('/')
+    if len(parts) >= 3 and parts[0] == 'cases' and parts[2] == 'index.html':
+        return parts[1]
+    return None
 
+def extract_analysis_info_from_path(path):
+    """Extract analysis slug from path like analysis/post-name/index.html"""
+    parts = path.split('/')
+    if len(parts) >= 3 and parts[0] == 'analysis' and parts[2] == 'index.html':
+        return parts[1]
+    return None
 
-def parse_analysis_md(filepath):
-    """Parse markdown analysis file"""
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    # Extract frontmatter
-    match = re.match(r'^---\n(.*?)\n---\n(.*)$', content, re.DOTALL)
-    if match:
-        frontmatter = yaml.safe_load(match.group(1))
-        body = match.group(2)
-        return frontmatter, body
-    return {}, content
-
-
-def format_case_post(case_data, is_new=True):
-    """Format post for a case (new or updated)"""
-    title = case_data.get('title', 'Unknown Case')
-    state = case_data.get('state', '')
-    status = case_data.get('status_detail', case_data.get('status', ''))
-    slug = case_data.get('slug', '')
-    
-    # Get law name (handle both single and multiple laws)
-    law_name = ""
-    if 'laws_challenged' in case_data and case_data['laws_challenged']:
-        law_name = case_data['laws_challenged'][0].get('short_name', '')
-    elif 'law_challenged_short' in case_data:
-        law_name = case_data['law_challenged_short']
-    
-    case_url = f"{SITE_URL}/cases/{slug}/"
-    
-    if is_new:
-        post = f"🚨 New case: {title}\n\n"
-        post += f"📍 {state}\n"
-        if law_name:
-            post += f"⚖️ Challenges: {law_name}\n"
-        post += f"\n{case_url}"
-    else:
-        post = f"📋 Case update: {title}\n\n"
-        post += f"Status: {status}\n"
-        post += f"\n{case_url}"
-    
-    return post
-
-
-def format_analysis_post(frontmatter, slug):
-    """Format post for new analysis"""
-    title = frontmatter.get('title', 'New Analysis')
-    date = frontmatter.get('date', datetime.now().strftime('%Y-%m-%d'))
-    
-    analysis_url = f"{SITE_URL}/analysis/{slug}/"
-    
-    post = f"📝 New analysis: {title}\n\n"
-    post += f"{analysis_url}"
-    
-    return post
-
-
-def post_to_mastodon(text):
+def post_to_mastodon(status):
     """Post to Mastodon"""
-    if not MASTODON_TOKEN or not MASTODON_INSTANCE:
-        print("Mastodon credentials not configured")
+    if not MASTODON_TOKEN:
+        print("Warning: MASTODON_TOKEN not set, skipping Mastodon post")
         return False
     
-    url = f"{MASTODON_INSTANCE}/api/v1/statuses"
-    headers = {
-        'Authorization': f'Bearer {MASTODON_TOKEN}',
-        'Content-Type': 'application/json'
-    }
-    data = {
-        'status': text,
-        'visibility': 'public'
-    }
+    url = f'{MASTODON_INSTANCE}/api/v1/statuses'
+    headers = {'Authorization': f'Bearer {MASTODON_TOKEN}'}
+    data = {'status': status}
     
     try:
-        response = requests.post(url, json=data, headers=headers)
+        response = requests.post(url, headers=headers, data=data)
         response.raise_for_status()
-        print(f"✅ Posted to Mastodon: {response.json().get('url')}")
+        print(f"Posted to Mastodon: {status[:50]}...")
         return True
     except Exception as e:
-        print(f"❌ Mastodon post failed: {e}")
+        print(f"Error posting to Mastodon: {e}")
         return False
-
 
 def post_to_bluesky(text):
     """Post to BlueSky"""
-    if not BLUESKY_HANDLE or not BLUESKY_PASSWORD:
-        print("BlueSky credentials not configured")
+    if not BLUESKY_PASSWORD:
+        print("Warning: BLUESKY_PASSWORD not set, skipping BlueSky post")
         return False
     
+    # Login to BlueSky
     try:
-        client = BlueskyClient()
-        client.login(BLUESKY_HANDLE, BLUESKY_PASSWORD)
+        login_url = 'https://bsky.social/xrpc/com.atproto.server.createSession'
+        login_data = {
+            'identifier': BLUESKY_USERNAME,
+            'password': BLUESKY_PASSWORD
+        }
+        login_response = requests.post(login_url, json=login_data)
+        login_response.raise_for_status()
+        access_token = login_response.json()['accessJwt']
         
-        response = client.send_post(text=text)
-        print(f"✅ Posted to BlueSky")
+        # Create post
+        post_url = 'https://bsky.social/xrpc/com.atproto.repo.createRecord'
+        headers = {'Authorization': f'Bearer {access_token}'}
+        post_data = {
+            'repo': BLUESKY_USERNAME,
+            'collection': 'app.bsky.feed.post',
+            'record': {
+                'text': text,
+                'createdAt': datetime.utcnow().isoformat() + 'Z',
+                '$type': 'app.bsky.feed.post'
+            }
+        }
+        
+        response = requests.post(post_url, headers=headers, json=post_data)
+        response.raise_for_status()
+        print(f"Posted to BlueSky: {text[:50]}...")
         return True
     except Exception as e:
-        print(f"❌ BlueSky post failed: {e}")
+        print(f"Error posting to BlueSky: {e}")
         return False
-
 
 def main():
     changed_files = get_changed_files()
     
-    for filepath in changed_files:
-        if not filepath:
-            continue
+    if not changed_files:
+        print("No files changed")
+        return
+    
+    print(f"Changed files: {changed_files}")
+    
+    # Detect case changes
+    case_changes = {}
+    for file in changed_files:
+        if file.startswith('cases/') and file.endswith('/index.html'):
+            case_slug = extract_case_info_from_path(file)
+            if case_slug:
+                title = extract_title_from_html(file)
+                if title:
+                    case_changes[case_slug] = title
+    
+    # Detect analysis changes
+    analysis_changes = {}
+    for file in changed_files:
+        if file.startswith('analysis/') and file.endswith('/index.html'):
+            analysis_slug = extract_analysis_info_from_path(file)
+            if analysis_slug:
+                title = extract_title_from_html(file)
+                if title:
+                    analysis_changes[analysis_slug] = title
+    
+    # Post about case changes
+    for case_slug, case_title in case_changes.items():
+        case_url = f"{SITE_URL}/cases/{case_slug}/"
         
-        # Check if it's a new or updated case
-        if filepath.startswith('data/cases/') and filepath.endswith('.yaml'):
-            # Check if file is new (added in this commit)
-            is_new = subprocess.run(
-                ['git', 'diff', '--diff-filter=A', '--name-only', 'HEAD~1', 'HEAD', filepath],
-                capture_output=True,
-                text=True
-            ).stdout.strip() != ''
-            
-            try:
-                case_data = parse_case_yaml(filepath)
-                post_text = format_case_post(case_data, is_new=is_new)
-                
-                print(f"\n{'New' if is_new else 'Updated'} case detected: {filepath}")
-                print(f"Post text:\n{post_text}\n")
-                
-                post_to_mastodon(post_text)
-                post_to_bluesky(post_text)
-                
-            except Exception as e:
-                print(f"Error processing {filepath}: {e}")
+        status = f"📋 Case update: {case_title}\n{case_url}"
         
-        # Check if it's new analysis
-        elif filepath.startswith('content/analysis/') and filepath.endswith('.md'):
-            is_new = subprocess.run(
-                ['git', 'diff', '--diff-filter=A', '--name-only', 'HEAD~1', 'HEAD', filepath],
-                capture_output=True,
-                text=True
-            ).stdout.strip() != ''
-            
-            if is_new:
-                try:
-                    frontmatter, body = parse_analysis_md(filepath)
-                    slug = os.path.splitext(os.path.basename(filepath))[0]
-                    post_text = format_analysis_post(frontmatter, slug)
-                    
-                    print(f"\nNew analysis detected: {filepath}")
-                    print(f"Post text:\n{post_text}\n")
-                    
-                    post_to_mastodon(post_text)
-                    post_to_bluesky(post_text)
-                    
-                except Exception as e:
-                    print(f"Error processing {filepath}: {e}")
-
+        post_to_mastodon(status)
+        post_to_bluesky(status)
+    
+    # Post about analysis changes
+    for analysis_slug, analysis_title in analysis_changes.items():
+        analysis_url = f"{SITE_URL}/analysis/{analysis_slug}/"
+        
+        status = f"📝 New analysis: {analysis_title}\n{analysis_url}"
+        
+        post_to_mastodon(status)
+        post_to_bluesky(status)
+    
+    if not case_changes and not analysis_changes:
+        print("No case or analysis changes detected")
 
 if __name__ == '__main__':
     main()
