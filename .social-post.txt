@@ -1,2 +1,4 @@
-xai-v-bonta-pi/
-⚖️ Case update: xAI files appeal of denial of preliminary injunction and the parties stipulate to a stay pending appeal
+#add slug of page to be linked
+xai-v-bonta-appeal/
+#add text of medial post
+⚖️ Case update: New page added for xAI appeal of denial of preliminary injunction
