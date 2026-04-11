@@ -1080,3 +1080,32 @@ footer {
         font-size: 1.5rem;
     }
 }
+/* Court Section Styling */
+.court-section {
+    margin: 3rem 0;
+}
+
+.court-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #0066cc;
+    color: #1a1a1a;
+}
+
+.court-section:first-of-type {
+    margin-top: 2rem;
+}
+
+/* Optional: Different styling for appeals section */
+.appeals-table thead {
+    background: #2a2a2a;
+}
+
+/* Case count styling under each table */
+.court-section .case-count {
+    text-align: right;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
