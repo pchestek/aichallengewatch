@@ -1109,3 +1109,17 @@ footer {
     font-size: 0.9rem;
     margin-top: 1rem;
 }
+/* Blockquote styling */
+.post-content blockquote,
+.page-content blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #0066cc;
+    background: #f5f8fa;
+    font-style: italic;
+}
+
+.post-content blockquote p,
+.page-content blockquote p {
+    margin: 0;
+}
