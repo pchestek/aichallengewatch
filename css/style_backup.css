@@ -22,24 +22,6 @@
     --shadow-soft: 0 1px 3px rgba(26, 22, 37, 0.04), 0 4px 12px rgba(26, 22, 37, 0.02);
     --shadow-medium: 0 2px 8px rgba(26, 22, 37, 0.06), 0 8px 24px rgba(26, 22, 37, 0.04);
     --shadow-lifted: 0 4px 16px rgba(26, 22, 37, 0.08), 0 12px 32px rgba(26, 22, 37, 0.06);
-    
-    /* Status badge colors */
-    --status-active-bg: #e8f4f8;
-    --status-active-text: #0066cc;
-    --status-appealed-bg: #e8f4f8;
-    --status-appealed-text: #0066cc;
-    --status-pending-bg: #e8f4f8;
-    --status-pending-text: #0066cc;
-    --status-filed-bg: #e8f4f8;
-    --status-filed-text: #0066cc;
-    --status-settled-bg: #e8f5e9;
-    --status-settled-text: #2e7d32;
-    --status-dismissed-bg: #f5f5f5;
-    --status-dismissed-text: #666;
-    --status-terminated-bg: #f5f5f5;
-    --status-terminated-text: #666;
-    --status-suspended-bg: #fff3cd;
-    --status-suspended-text: #856404;
 }
 
 /* Reset and Base */
@@ -483,48 +465,24 @@ footer {
     letter-spacing: 0.03em;
 }
 
-/* Active statuses - blue */
 .status-badge.active {
-    background: var(--status-active-bg);
-    color: var(--status-active-text);
+    background: var(--color-accent-pale);
+    color: var(--color-accent);
 }
 
-.status-badge.appealed {
-    background: var(--status-appealed-bg);
-    color: var(--status-appealed-text);
+.status-badge.settled {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-badge.dismissed {
+    background: var(--color-cloud);
+    color: var(--color-stone);
 }
 
 .status-badge.pending {
-    background: var(--status-pending-bg);
-    color: var(--status-pending-text);
-}
-
-.status-badge.filed {
-    background: var(--status-filed-bg);
-    color: var(--status-filed-text);
-}
-
-/* Resolved statuses - green */
-.status-badge.settled {
-    background: var(--status-settled-bg);
-    color: var(--status-settled-text);
-}
-
-/* Inactive statuses - gray */
-.status-badge.dismissed {
-    background: var(--status-dismissed-bg);
-    color: var(--status-dismissed-text);
-}
-
-.status-badge.terminated {
-    background: var(--status-terminated-bg);
-    color: var(--status-terminated-text);
-}
-
-/* Suspended status - amber/yellow */
-.status-badge.suspended {
-    background: var(--status-suspended-bg);
-    color: var(--status-suspended-text);
+    background: var(--color-accent-pale);
+    color: var(--color-accent);
 }
 
 .case-count {
