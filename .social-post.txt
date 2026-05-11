@@ -1,2 +1,2 @@
-accountability-v-knudsen
-⚖️New case filed: Accountability in State Government v. Knudsen filed in the District of Montana, challenging the constitutionality of a law restricting the use of depfakes in election materials.
+babylon-bee-v-lopez
+⚖️ Catch-up post, adding The Babylon Bee v. Lopez to the website. The challenged law was over use of AI for deceptive election materials; in January 2026 the District Court for the District of Hawai'i held the law unconstitutional under the First and Fourteenth Amendments. Decision at https://storage.courtlistener.com/recap/gov.uscourts.hid.174048/gov.uscourts.hid.174048.47.0.pdf. The state did not appeal.

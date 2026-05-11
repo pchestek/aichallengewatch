@@ -70,5 +70,12 @@
       <guid>https://aichallengewatch.com/cases/xai-v-weiser/</guid>
       <description></description>
     </item>
+    <item>
+      <title>The Babylon Bee, LLC v. Lopez</title>
+      <link>https://aichallengewatch.com/cases/babylon-bee-v-lopez/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://aichallengewatch.com/cases/babylon-bee-v-lopez/</guid>
+      <description>Case page generated from YAML data.</description>
+    </item>
   </channel>
 </rss>
