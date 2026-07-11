@@ -1,3 +1,2 @@
-xai-v-weiser
-(300 character limit)
-⚖️ Colorado governor signs into law replacement legislation for the challenged law. We are waiting to see whether xAI will continue its lawsuit.
+kohns-v-ellison
+⚖️ Minnesota has resumed proceedings in Kohls v. Ellison, which challenges the constitutionality of a deepfakes law for political campaigns. A preliminary injunction was denied and I would expect an amended complaint to cure the standing defect the district court identified.
