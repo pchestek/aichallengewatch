@@ -5,7 +5,7 @@ import json
 import subprocess
 import requests
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Get environment variables
 MASTODON_TOKEN = os.environ.get('MASTODON_TOKEN')
@@ -13,6 +13,7 @@ BLUESKY_PASSWORD = os.environ.get('BLUESKY_PASSWORD')
 MASTODON_INSTANCE = 'https://techpolicy.social'
 BLUESKY_USERNAME = 'aichallengewatch.bsky.social'
 SITE_URL = 'https://aichallengewatch.com'
+BLUESKY_MAX_LENGTH = 300
 
 def read_social_post_file():
     """Read .social-post.txt file if it exists"""
@@ -110,7 +111,7 @@ def post_to_bluesky(text):
         
         record = {
             'text': text,
-            'createdAt': datetime.utcnow().isoformat() + 'Z',
+            'createdAt': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
             '$type': 'app.bsky.feed.post'
         }
         
@@ -159,11 +160,24 @@ def main():
     
     # Build the post text: custom message + URL
     post_text = f"{custom_message}\n{url}"
-    
+
     print(f"Posting about {post_type}: {slug}")
     print(f"Message: {custom_message}")
     print(f"URL: {url}")
-    
+
+    # BlueSky has a strict character limit that includes the URL and the
+    # line break. Check BEFORE posting to either platform so both platforms
+    # always get the identical message - if it's too long, we post to
+    # neither, rather than have Mastodon succeed and BlueSky fail.
+    if len(post_text) > BLUESKY_MAX_LENGTH:
+        print(f"ERROR: Post is {len(post_text)} characters, which exceeds BlueSky's "
+              f"{BLUESKY_MAX_LENGTH}-character limit (message + URL combined).")
+        print("No posts were made to Mastodon or BlueSky.")
+        print("Shorten your message in .social-post.txt and push again.")
+        print(f"You have about {BLUESKY_MAX_LENGTH - len(url) - 1} characters "
+              f"of message text to work with (the URL and line break use up the rest).")
+        return
+
     # Post to both platforms
     mastodon_success = post_to_mastodon(post_text)
     bluesky_success = post_to_bluesky(post_text)
